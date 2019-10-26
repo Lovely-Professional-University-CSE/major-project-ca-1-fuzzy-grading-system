@@ -1,16 +1,20 @@
 import numpy as np
 
 def atten(x):
-    if (x >= 90):
-        return 5
-    elif (85<= x <90):
-        return 4
-    elif (80<= x <85):
-        return 3
-    elif (75<= x <80):
-        return 2
-    else:
-        return 1
+    attny = []
+    for i in range(len(x)):
+        if (x[i] >= 90):
+            attny.append(5)
+        elif (85<= x[i] <90):
+            attny.append(4)
+        elif (80<= x[i] <85):
+            attny.append(3)
+        elif (75<= x[i] <80):
+            attny.append(2)
+        else:
+            attny.append(1)
+    attny = np.array(attny)
+    return attny
 
 def mte_mrks(mtex):
     mtey = []
@@ -36,9 +40,15 @@ def ca_mrks(cax):
     cay = np.array(cay)
     return cay
 
-x = int(input('Enter Attendence:'))
-print(x)
+
 n = int(input('Enter Number of subjects:'))
+x = []
+print("Enter attendence of each subject:")
+for i in range(n):
+    j = eval(input('Enter attendence :'))
+    x.append(j)
+print(x)
+
 print('Enter mte marks of Each subjet:')
 mtex = []
 for i in range(n):
@@ -64,7 +74,7 @@ for i in range(n):
     cax.append(sum(caxj))
 print(cax)
 
-print(atten(x))
-print(mte_mrks(mtex))
-print(ete_mrks(etex))
-print(ca_mrks(cax))
+print("Attendence Marks: ",atten(x))
+print("MTE Marks: ",mte_mrks(mtex))
+print("ETE Marks:  ",ete_mrks(etex))
+print("CA Marks: ",ca_mrks(cax))
