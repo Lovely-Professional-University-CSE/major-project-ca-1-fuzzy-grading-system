@@ -54,5 +54,5 @@ wm=ctrl.ControlSystemSimulation(wm_ctrl)
 wm.input['mte']=30
 wm.input['ete']=32
 wm.input['att']=3
-print(wm.output['grade']
-)ime.view(sim=wm)
+print(wm.output['grade'])
+ime.view(sim=wm)
