@@ -6,10 +6,9 @@ import sqlite3
 
 def login():
     global imglabel
-    global username
+    global regnologin
     global password
-    #if 'normal' == regt.state():
-    #    regt.destroy()
+    
     imglabel = Tk()
     imglabel.title("Student Grading System")
 
@@ -22,13 +21,13 @@ def login():
     imglabel.geometry("600x400")
     large_font = ('Verdana',20)
 
-    username = StringVar()
+    regnologin = StringVar()
     password = StringVar()
 
     Label(img, text = "Enter username and password below",fg="black", font=large_font, fill=None).place(y=50, x=50)
 
-    Label(img, text = "Login Id ",bg="light pink", padx=10, pady=10).place(y=100,x=40)
-    e1 = Entry(img, textvariable=username,font=large_font).place(y=100,x=120)
+    Label(img, text = "Reg Id ",bg="light pink", padx=10, pady=10).place(y=120,x=40)
+    e1 = Entry(img, textvariable=regnologin,font=large_font).place(y=120,x=120)
 
     Label(img, text = "Password ",bg="light pink",padx=10, pady=10).place(y=200,x=40)
     e2 = Entry(img, textvariable=password, show='*',font=large_font).place(y=200,x=120)
@@ -41,13 +40,17 @@ def login():
 
 def verify():
     pass
+
+
+
 def Back():
     regt.destroy()
     login()
 
 def regback():
     database()
-    cursor.execute("INSERT INTO 'studentInfo' (username, password) VALUES(newname, newpass)")
+    params = (str(regno.get()), str(newname.get()), str(newpass.get()))
+    cursor.execute("INSERT INTO 'studentInfo' (student_id, username, password) VALUES(?,?,?)", params)
     conn.commit()
     conn.close()
     regt.destroy()
@@ -60,6 +63,7 @@ def register():
     global newname
     global newpass
     global regt
+    global regno
    
     imglabel.destroy()
     regt = Tk()
@@ -71,27 +75,31 @@ def register():
     imgreg.pack(fill='both', expand=True)
 
     regt.title("Sign Up")
-    regt.geometry("600x400")
+    regt.geometry("600x450")
     
     newname = StringVar()
     newpass = StringVar()
+    regno = StringVar()
     
     lbl_title = Label(imgreg, text = " Login Application", font=('arial', 15)).place(y=50, x=50)
 
     lbl_username = Label(imgreg, text = "Username:", font=('arial', 14), padx=10, pady=10).place(y=100,x=40)
     user1 = Entry(imgreg, textvariable=newname, font=('arial', 14)).place(y=100,x=200)
 
-    lbl_password = Label(imgreg, text = "Password:", font=('arial', 14), padx=10, pady=10).place(y=200,x=40)
-    passw1 = Entry(imgreg, textvariable=newpass, show="*", font=('arial', 14)).place(y=200,x=200)
+    lbl_regno = Label(imgreg, text = "Reg No:", font=('arial', 14), padx=10, pady=10).place(y=200,x=40)
+    regno1 = Entry(imgreg, textvariable=regno, font=('arial', 14)).place(y=200,x=200)
 
-    Button(imgreg, text="Back", width=10, command=Back, padx=5, pady=5).place(y=280,x=120)
-    Button(imgreg, text="Register", width=10, command=regback, padx=5, pady=5).place(y=280,x=280)
+    lbl_password = Label(imgreg, text = "Password:", font=('arial', 14), padx=10, pady=10).place(y=300,x=40)
+    passw1 = Entry(imgreg, textvariable=newpass, show="*", font=('arial', 14)).place(y=300,x=200)
+
+    Button(imgreg, text="Back", width=10, command=Back, padx=5, pady=5).place(y=380,x=120)
+    Button(imgreg, text="Register", width=10, command=regback, padx=5, pady=5).place(y=380,x=280)
     
 
     lbl_text = Label(imgreg).place(y=300, x=150)
     
 
-    if USERNAME.get() == "" or PASSWORD.get() == "":
+    if newname.get() == "" or newpass.get() == "" or regno.get() == "":
         lbl_text.config(text="Please complete the required field!", fg="red")
 
     regt.mainloop()
@@ -101,12 +109,8 @@ def database():
     global conn, cursor
     conn = sqlite3.connect("studentDetails.db")
     cursor = conn.cursor()
-    #cursor.execute("CREATE TABLE IF NOT EXISTS 'studentInfo' (student_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)"
-    
-    cursor.execute("SELECT * FROM 'studentInfo'")
-    if cursor.fetchone() is None:
-        cursor.execute("INSERT INTO 'studentInfo' (username, password) VALUES('admin', 'admin')")
-        conn.commit()
+    cursor.execute("CREATE TABLE IF NOT EXISTS 'studentInfo' (student_id TEXT NOT NULL PRIMARY KEY, username TEXT, password TEXT)")
+
 
 
 def deleteUser():
