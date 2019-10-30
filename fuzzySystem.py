@@ -1,6 +1,21 @@
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+import calculate_marks as cm
+
+n = int(input('Enter Number of subjects:'))
+
+mtey = cm.mte_mrks(n)
+print('MTE marks:',mtey)
+
+etey  = cm.ete_mrks(n)
+print('ETE marks:',etey)
+
+attny = cm.atten(n)
+print('Attn marks:',attny)
+
+cay = cm.ca_mrks(n)
+print('CA marks:',cay)
 
 mte=ctrl.Antecedent(np.arange(0,21,1),'mte')
 ete=ctrl.Antecedent(np.arange(0,51,1),'ete')
@@ -19,11 +34,13 @@ ete['h']=fuzz.trimf(ete.universe,[35,45,50])
 attn['l']=fuzz.trimf(attn.universe, [0,1,2])
 attn['m']=fuzz.trimf(attn.universe, [2,3,4])
 attn['h']=fuzz.trimf(attn.universe, [3,4,5])
-cgpa['l']=fuzz.trimf(cgpa.universe,[0,3,4])
+cgpa['l']=fuzz.trimf(cgpa.universe,[0,3,5])
 cgpa['m']=fuzz.trimf(cgpa.universe,[4,6,8])
-cgpa['h']=fuzz.trimf(cgpa.universe,[8,9,10])
+cgpa['h']=fuzz.trimf(cgpa.universe,[7,9,10])
 mte['m'].view()
 ete.view()
+ca.view()
+attn.view()
 cgpa.view()
 rule1=ctrl.Rule(mte['l'] | ete['l'] |attn['l'] |ca['l'],cgpa['l'])
 rule2=ctrl.Rule(mte['m'] | ete['l'] |attn['l'] |ca['l'],cgpa['l'])
@@ -48,10 +65,10 @@ tipping_ctrl=ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5,rule6,rule7,rule8
 tipping=ctrl.ControlSystemSimulation(tipping_ctrl)
 #Pass inputs to the control system using antecedent labels with pythonic api
 #note: if you like passsing many inputs all at once ,use .inputs (dict_of_data)
-tipping.input['mte']=15
-tipping.input['ete']=45
-tipping.input['ca']=14
-tipping.input['attn']=4
+tipping.input['mte']= mtey
+tipping.input['ete']= etey
+tipping.input['ca']= cay
+tipping.input['attn']= attny
 #Crunch the numbers
 tipping.compute()
 print(tipping.output['cgpa'])
