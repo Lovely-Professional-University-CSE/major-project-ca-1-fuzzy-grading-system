@@ -2,12 +2,14 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import sqlite3
+import homeWindow as wind
 
 
 def login():
     global imglabel
     global regnologin
     global password
+    global img
     
     imglabel = Tk()
     imglabel.title("Student Grading System")
@@ -39,7 +41,21 @@ def login():
 
 
 def verify():
-    pass
+    database()
+    loginparams = (str(regnologin.get()), str(password.get()))
+    cursor.execute("SELECT * from studentInfo")
+    rows = cursor.fetchall()
+    regdb = [row[0] for row in rows]
+    passdb = [row[2] for row in rows]
+    conn.commit()
+    
+
+    if (loginparams[0] in regdb) and (loginparams[1] in passdb):
+        #funcName()
+        imglabel.destroy()
+        wind.basewindow()
+    else:
+        Label(img, text = "Enter again",fg="black", font=('arial', 10), fill=None).place(y=350, x=100)
 
 
 
