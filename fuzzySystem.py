@@ -72,4 +72,4 @@ tipping.input['attn']= attny
 #Crunch the numbers
 tipping.compute()
 print(tipping.output['cgpa'])
-cgpa.view(sim=tipping)
+cgpa.view(sin=tipping)
