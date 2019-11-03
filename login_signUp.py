@@ -2,7 +2,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 import sqlite3
-import homeWindow as wind
+from homeWindow import *
 
 
 def login():
@@ -53,9 +53,9 @@ def verify():
     if (loginparams[0] in regdb) and (loginparams[1] in passdb):
         #funcName()
         imglabel.destroy()
-        wind.basewindow()
+        basewindow()
     else:
-        Label(img, text = "Enter again",fg="black", font=('arial', 10), fill=None).place(y=350, x=100)
+        Label(img, text = "Enter again",fg="black").place(y=350, x=100)
 
 
 
