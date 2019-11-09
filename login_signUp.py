@@ -3,7 +3,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import sqlite3
 from homeWindow import *
-
+from fuzzySystem import fuzzy_logics
 
 def login():
     global imglabel
@@ -53,7 +53,7 @@ def verify():
     if (loginparams[0] in regdb) and (loginparams[1] in passdb):
         #funcName()
         imglabel.destroy()
-        basewindow()
+        basewindow(regnologin)
     else:
         Label(img, text = "Enter again",fg="black").place(y=350, x=100)
 
