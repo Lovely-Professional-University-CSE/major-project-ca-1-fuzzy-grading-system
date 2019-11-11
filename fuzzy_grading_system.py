@@ -112,8 +112,8 @@ def register():
 
     lbl_text = Label(imgreg).place(y=300, x=150)
 
-    if newname.get() == "" or newpass.get() == "" or regno.get() == "":
-        lbl_text.config(text="Please complete the required field!", fg="red")
+    #if newname.get() == "" or newpass.get() == "" or regno.get() == "":
+     #   lbl_text.config(text="Please complete the required field!", fg="red")
 
     regt.mainloop()
 
