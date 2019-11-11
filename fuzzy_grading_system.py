@@ -3,6 +3,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import sqlite3
 from fuzzySystem import fuzzy_logics
+from tkinter import messagebox
 
 def login():
     global imglabel
@@ -53,7 +54,8 @@ def verify():
         imglabel.destroy()
         basewindow()
     else:
-        Label(img, text = "Enter again",fg="black").place(y=350, x=100)
+        #Label(img, text = "Enter again",fg="black").place(y=350, x=100)
+        messagebox.showinfo("Wrong Credentials", "Wrong User Id or Password")
 
 
 def Back():
@@ -172,7 +174,7 @@ def result():
     res = Tk()
     res.title("Result CGPA")
     res.geometry("600x400")
-    print(param)
+    #print(param)
 
     Label(res, text = "CGPA : " + str(fuzzy_logics(int(param[1]), int(param[2]), int(param[3]), int(param[4]))),fg="black", font=('arial', 24), fill=None).place(y=50, x=80)
 
@@ -237,18 +239,22 @@ def inputmarks(subjects):
     Label(inpt, text = "Class Test ",bg="light pink", font=('arial', 14)).place(y=80,x=40)
     clas=Entry(inpt, font=('arial', 14))
     clas.place(y=80,x=180)
+    Label(inpt, text = "/30 ", font=('arial', 14)).place(y=80,x=410)
 
     Label(inpt, text = "Attendance ",bg="light pink", font=('arial', 14)).place(y=140,x=40)
     att=Entry(inpt, font=('arial', 14))
     att.place(y=140,x=180)
+    Label(inpt, text = "/100 ", font=('arial', 14)).place(y=140,x=410)
 
     Label(inpt, text = "Half Term ",bg="light pink", font=('arial', 14)).place(y=200,x=40)
     half=Entry(inpt, font=('arial', 14))
     half.place(y=200,x=180)
+    Label(inpt, text = "/50 ", font=('arial', 14)).place(y=200,x=410)
 
     Label(inpt, text = "Final Term ",bg="light pink", font=('arial', 14)).place(y=260,x=40)
     fin=Entry(inpt, font=('arial', 14))
     fin.place(y=260,x=180)
+    Label(inpt, text = "/100 ", font=('arial', 14)).place(y=260,x=410)
     
     Button(inpt, text="Submit",command=lambda: collect(subjects), width=20, height=2).place(y=320,x=300)
     

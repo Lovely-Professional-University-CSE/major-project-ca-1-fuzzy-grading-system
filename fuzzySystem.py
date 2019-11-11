@@ -30,8 +30,8 @@ def fuzzy_logics(cass, attend, halt, fint):
     classTest['m']=fuzz.gaussmf(classTest.universe, 18,4)
     classTest['h']=fuzz.gaussmf(classTest.universe, 25, 4)
     
-    cgpa['l']=fuzz.gaussmf(cgpa.universe,2.0,1.0)
-    cgpa['m']=fuzz.gaussmf(cgpa.universe,5.0,1.0)
+    cgpa['l']=fuzz.gaussmf(cgpa.universe,3.0,1.0)
+    cgpa['m']=fuzz.gaussmf(cgpa.universe,6.0,1.0)
     cgpa['h']=fuzz.gaussmf(cgpa.universe,9.0,1.0)
 
     
@@ -129,11 +129,11 @@ def fuzzy_logics(cass, attend, halt, fint):
 
 
 
-    #finalExam['m'].view()
-    #halfTerm.view()
-    #attendance.view()
-    #classTest.view()
-    #cgpa.view()
+    finalExam['m'].view()
+    halfTerm.view()
+    attendance.view()
+    classTest.view()
+    cgpa.view()
 
     tipping=ctrl.ControlSystemSimulation(tipping_ctrl)
     
