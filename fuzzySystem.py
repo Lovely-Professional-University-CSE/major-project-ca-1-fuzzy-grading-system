@@ -144,6 +144,5 @@ def fuzzy_logics(cass, attend, halt, fint):
 
     tipping.compute()
     return tipping.output['cgpa']
-    #cgpa.view(sim=tipping)
-
+    
 #print(fuzzy_logics(10,50,45,52))

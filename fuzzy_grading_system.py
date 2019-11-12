@@ -89,7 +89,7 @@ def register():
     imgreg.pack(fill='both', expand=True)
 
     regt.title("Sign Up")
-    regt.geometry("600x450")
+    regt.geometry("600x400")
     
     newname = StringVar()
     newpass = StringVar()
@@ -97,23 +97,20 @@ def register():
     
     lbl_title = Label(imgreg, text = " Login Application", font=('arial', 15)).place(y=50, x=50)
 
-    lbl_username = Label(imgreg, text = "Username:", font=('arial', 14), padx=10, pady=10).place(y=100,x=40)
-    user1 = Entry(imgreg, textvariable=newname, font=('arial', 14)).place(y=100,x=200)
+    lbl_username = Label(imgreg, text = "Username:", font=('arial', 14), padx=10, pady=10).place(y=90,x=40)
+    user1 = Entry(imgreg, textvariable=newname, font=('arial', 14)).place(y=90,x=200)
 
-    lbl_regno = Label(imgreg, text = "Reg No:", font=('arial', 14), padx=10, pady=10).place(y=200,x=40)
-    regno1 = Entry(imgreg, textvariable=regno, font=('arial', 14)).place(y=200,x=200)
+    lbl_regno = Label(imgreg, text = "Reg No:", font=('arial', 14), padx=10, pady=10).place(y=180,x=40)
+    regno1 = Entry(imgreg, textvariable=regno, font=('arial', 14)).place(y=180,x=200)
+ 
+    lbl_password = Label(imgreg, text = "Password:", font=('arial', 14), padx=10, pady=10).place(y=270,x=40)
+    passw1 = Entry(imgreg, textvariable=newpass, show="*", font=('arial', 14)).place(y=270,x=200)
 
-    lbl_password = Label(imgreg, text = "Password:", font=('arial', 14), padx=10, pady=10).place(y=300,x=40)
-    passw1 = Entry(imgreg, textvariable=newpass, show="*", font=('arial', 14)).place(y=300,x=200)
-
-    Button(imgreg, text="Back", width=10, command=Back, padx=5, pady=5).place(y=380,x=120)
-    Button(imgreg, text="Register", width=10, command=regback, padx=5, pady=5).place(y=380,x=280)
+    Button(imgreg, text="Back", width=10, command=Back, padx=5, pady=5).place(y=340,x=120)
+    Button(imgreg, text="Register", width=10, command=regback, padx=5, pady=5).place(y=340,x=280)
     
 
     lbl_text = Label(imgreg).place(y=300, x=150)
-
-    #if newname.get() == "" or newpass.get() == "" or regno.get() == "":
-     #   lbl_text.config(text="Please complete the required field!", fg="red")
 
     regt.mainloop()
 
