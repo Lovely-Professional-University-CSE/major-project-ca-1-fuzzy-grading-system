@@ -155,7 +155,7 @@ reg=num
 count=0
 a=int(reg//100000)
 if a==117 or a==116 or a==118 or a==119:
-    print("Your in valid years")
+    print("You are in valid years")
     if reg>0:
         while reg>0:
             reg=reg//10
@@ -163,12 +163,12 @@ if a==117 or a==116 or a==118 or a==119:
         print("length of your reg:",count)    
         print("your registratin is:",num)
         if count==8:
-            print("you have enter valid registration ID:")
+            print("you have entered valid registration ID:")
         else:
                 print("count not valid",count)  
 else:
-    print("You have enter wrong ID or More than 8 Digits")
-    print("your exist")
+    print("You have entered wrong ID or More than 8 Digits")
+    print("you are not exist")
     sys.exit()
 
     
@@ -183,7 +183,7 @@ for i in range(1,subjects+1):
         ca_marks.append(int(input("Enter marks of CA for 30:")))
         mte_marks.append(int(input("Enter marks of MID for 40:" )))
         ete_marks.append(int(input("Enter marks of ETE for 70:")))
-        at_per.append(int(input("Enter percentage of subject:")))
+        at_per.append(int(input("Enter attendance percentage of subject:")))
         print(i,"subject marks completed\n") 
 
 
@@ -278,7 +278,7 @@ try:
         tot_avg=(tot_sum/subjects)
         print("Average:",tot_avg)
 except Exception as e:
-        print("its a erroe check")
+        print("its a error check")
         print(e)
 
 
