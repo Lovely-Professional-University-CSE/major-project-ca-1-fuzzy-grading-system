@@ -1,17 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Oct 30 19:50:48 2019
-
-@author: srika
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 26 12:19:22 2019
-
-@author: admin
-"""
-
 from tkinter import *
 import os
 import numpy as np
@@ -228,12 +214,12 @@ def origin():
    wm_ctrl=ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5,rule6,rule7,rule8,rule9,rule10,rule11,rule12,rule13,rule14,rule16])
    wm=ctrl.ControlSystemSimulation(wm_ctrl)
    set1=[]
-   set1=var1.get()
-   set2= var2.get()
-   set3= var3.get()
-   wm.input['mte']= set1
-   wm.input['ete']= set2
-   wm.input['att']= set3
+   #set1=var1.get()
+   #set2= var2.get()
+   #set3= var3.get()
+   wm.input['mte']= Int(var1.get())
+   wm.input['ete']= Int(var2.get())
+   wm.input['att']= Int(var3.get())
    wm.compute()
    print(wm.output['grade'])
    grade.view(sim=wm) 
