@@ -227,13 +227,13 @@ def origin():
    rule16=ctrl.Rule(mte['h'] | ete['l'] | att['h'],grade['m'])
    wm_ctrl=ctrl.ControlSystem([rule1,rule2,rule3,rule4,rule5,rule6,rule7,rule8,rule9,rule10,rule11,rule12,rule13,rule14,rule16])
    wm=ctrl.ControlSystemSimulation(wm_ctrl)
-   set1=[]
-   set1=var1.get()
-   set2= var2.get()
-   set3= var3.get()
-   wm.input['mte']= set1
-   wm.input['ete']= set2
-   wm.input['att']= set3
+   #set1=[]
+   #set1=var1.get()
+   #set2= var2.get()
+   #set3= var3.get()
+   wm.input['mte']= int(var1.get())
+   wm.input['ete']= int(var2.get())
+   wm.input['att']= int(var3.get())
    wm.compute()
    print(wm.output['grade'])
    grade.view(sim=wm) 

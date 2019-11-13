@@ -173,7 +173,7 @@ def result():
     res.geometry("600x400")
     #print(param)
 
-    Label(res, text = "CGPA : " + str(fuzzy_logics(int(param[1]), int(param[2]), int(param[3]), int(param[4]))),fg="black", font=('arial', 24), fill=None).place(y=50, x=80)
+    Label(res, text = "CGPA : " + str(fuzzy_logics(int(param[1]), int(param[2]), int(param[3]), int(param[4]))),fg="black", font=('arial', 30), fill=None).place(y=100, x=170)
 
     res.mainloop()
 

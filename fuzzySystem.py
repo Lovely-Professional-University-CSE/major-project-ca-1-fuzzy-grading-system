@@ -143,6 +143,6 @@ def fuzzy_logics(cass, attend, halt, fint):
     tipping.input['finalExam']= fint
 
     tipping.compute()
-    return tipping.output['cgpa']
+    return round(tipping.output['cgpa'],2)
     
 #print(fuzzy_logics(10,50,45,52))
